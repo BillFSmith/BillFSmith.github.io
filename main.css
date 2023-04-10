@@ -4,7 +4,7 @@ body {
     background: #f2f6e9;
 }
 .navbar {
-    background:#6ab446;
+    background:#3b3b3b;
 }
 .nav-link,
 .navbar-brand {
@@ -58,17 +58,32 @@ body {
 }
 .feature-title {
 	color: #333;
-	font-size: 1.3rem;
+	font-size: 2.0rem;
 	font-weight: 700;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	text-transform: uppercase;
 }
 .features img {
 	-webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
 	-moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
 	box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
-	margin-bottom: 16px;
+	margin-bottom: 5px;
 }
+
+.frontpagecontainer {
+	margin: 0.8em auto;
+	width: 95%;
+}
+
+
+.center {
+  text-align: center;
+}
+
+.bottom {
+  text-align: bottom;
+}
+
 
 
 .no-gutters {
