@@ -70,6 +70,27 @@ body {
 	margin-bottom: 5px;
 }
 
+.food-text {
+	font-size: 1.5rem;
+	font-weight: 300;
+	margin-bottom: 10px;
+}
+
+.food-text-meat {
+	color: #e60000;
+}
+
+.food-text-dairy {
+	color: #e6a100;
+}
+
+.food-text-vegan {
+	color: #21b504;
+}
+
+
+
+
 .frontpagecontainer {
 	margin: 0.8em auto;
 	width: 95%;
@@ -106,14 +127,6 @@ body {
   flex: 33.33%;
   padding: 5px;
 }
-
-
-
-
-
-
-
-
 
 
 .category-block {
