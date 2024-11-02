@@ -18,6 +18,12 @@ h1 {
   color: #1e212b;
 }
 
+@media (max-width:700px){
+  h1 {
+    font-size: 4.5vh;
+        }
+}
+
 .randomizer {
   //background-color: grey;
   margin-left: auto;
@@ -40,15 +46,22 @@ h1 {
   //background-color:blue;
   height:10vh;
   width:100%;
-  margin:0;
+  margin:0 0%;
   padding:0;
 }
 
 #buttonRand, #buttonDelete, #animations-toggle {
   width: 31.5%;
-  height: 99%;
+  height: 100%;
   margin: 0 0.5%;
   font-size: 3vh;
+  vertical-align: top;
+}
+
+@media (max-width:700px){
+  #buttonRand, #buttonDelete, #animations-toggle {
+    font-size: 2.5vh;
+        }
 }
 
 #buttonRand, #buttonDelete {
@@ -73,14 +86,22 @@ h1 {
   padding:0;
 }
 
-
 #textbox {
  width:99.5%;
  height:65vh;
- margin: 2% 0;
- padding:0;
+ margin-top: 2%;
+ margin-bottom: 0;
+ margin-left: -0.5%;
+ margin-right: 0; 
+ padding:0 0;
  font-size:5vh;
  text-align: center;
  color: #1e212b;
+}
+
+@media (max-width:700px){
+  #textbox {
+    font-size: 4vh;
+        }
 }
 
