@@ -11,17 +11,17 @@ let delIncr = 100;
 let randIncr = 400;
 
 function animToggleFun() {
-  if (animToggle.innerText === "turn animation off") {
+  if (animToggle.innerText === "turn off animation") {
     buttonRand.value = "toggle a";
     delIncr = 0;
     randIncr = 0;  
-    animToggle.innerText = "turn animation on"  
+    animToggle.innerText = "turn on animation"  
     document.getElementById("animations-toggle").style.color = "#ff8427";
   } else {
     buttonRand.value = "toggle b";
     delIncr = 50;
     randIncr = 100;
-    animToggle.innerText = "turn animation off"  
+    animToggle.innerText = "turn off animation"  
     document.getElementById("animations-toggle").style.color = "#4d8b31";
   }
 }
