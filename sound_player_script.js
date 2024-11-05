@@ -1,5 +1,6 @@
 const buttonRand = document.querySelector('#buttonRand');
 const playSound = document.querySelector("#playSound");
+const playSilence = document.querySelector("#playSilence")
 const quantity = document.querySelector("#quantity");
 
 buttonRand.onclick = playFun;
@@ -8,6 +9,10 @@ buttonRand.onclick = playFun;
 
 function playAudio() {
   playSound.play();
+}
+
+function playQuiet() {
+  playSilence.play();
 }
 
 function muteAudio() {
@@ -58,15 +63,16 @@ function playFun() {
 	//setTimeout("muteAudio()", 1000);
 	//setTimeout("muteAudioOff()", delayInMs);
 	
-	setTimeout("quietAudio()", 1000);
-	setTimeout("loudAudio()", delayInMs);
+	//setTimeout("quietAudio()", 1000);
+	//setTimeout("loudAudio()", delayInMs);
 	
 	let delIncr = 6000;
 	let loops = Number(quantity.value) * 10;
 	
-	for (let i=0;i<loops;i++) {
+	for (let i=1;i<loops;i++) {
 		let delay = delIncr * i
-		setTimeout("playAudio()", delay);
+		//setTimeout("playAudio()", delay);
+		setTimeout("playQuiet()", delay);
 	}
 	
 	
