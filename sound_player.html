@@ -14,22 +14,29 @@
 			<h1>Gong Timer</h1>
 		</div>
 		
-		<div class="text-entry">
- 			<label for="quantity" id="quantityLabel">Minutes:</label>
-			<input type="number" id="quantity" name="quantity" min="0" max="500" value="0.2"> 
+		<div class="volume-section">
+		
+		 	<audio controls id="playSound">
+  				<source src="Ship_Bell-Mike_Koenig-1911209136.mp3" type="audio/mpeg">
+				Your browser does not support the audio element.
+			</audio> 
 		</div>
 		
-		<div class="controls">
-			<button id="buttonRand"> play</button>	
-		</div>
 		
+		<div class="timer-section">
+			<div class="text-entry">
+ 				<label for="quantity" id="quantityLabel">Minutes:</label>
+				<input type="number" id="quantity" name="quantity" min="0" max="500" value="0.2"> 
+			</div>
+			
+			<div class="controls">
+				<button id="buttonRand"> play</button>	
+			</div>
+		</div>	
 
 
 
- 	<audio controls id="playSound">
-  		<source src="Ship_Bell-Mike_Koenig-1911209136.mp3" type="audio/mpeg">
-		Your browser does not support the audio element.
-	</audio> 
+
 
 	</main>
 	</div>

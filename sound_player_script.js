@@ -4,7 +4,7 @@ const quantity = document.querySelector("#quantity");
 
 buttonRand.onclick = playFun;
 
-// let delIncr = 6000;
+let delIncr = 10000;
 
 function playAudio() {
   playSound.play();
@@ -31,7 +31,7 @@ function playFun() {
 	buttonRand.innerText = "playing (click to restart)";
 	printToBox("finished", delayInMs)
 	setTimeout("playAudio()", 0);
-	setTimeout("playAudio()", delayInMs);
+	//setTimeout("playAudio()", delayInMs);
 	
 	
 	//setTimeout("delButtonText()", 6000, "test");
@@ -41,11 +41,11 @@ function playFun() {
 	
 	
 	
-	/*for (let i=0;i<100;i++) {
+	for (let i=0;i<100;i++) {
 		let delay = delIncr * i
 		setTimeout("playAudio()", delay);
 		
-	}*/
+	}
 }
 
 
