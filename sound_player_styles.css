@@ -31,7 +31,7 @@ h1 {
   margin-left: auto;
   margin-right: auto;
   width: 90vw;
-  max-width:1200px;
+  max-width:700px;
   margin-top:0;
   padding-top:4vh;
  }
@@ -39,72 +39,60 @@ h1 {
 .title-section {
   width:99%;
   margin:3px 7px;
-  //background-color:red;
+  background-color:red;
   height:10vh;
   display:inline-block;
 }
 
 .controls {
-  //background-color:blue;
-  height:10vh;
+  margin-left: auto;
+  margin-right: auto;
+  background-color:blue;
+  height:20vh;
   width:100%;
   margin:0 0%;
   padding:0;
 }
 
 #buttonRand, #buttonDelete, #animations-toggle {
-  width: 31.5%;
+  width: 99%;
   height: 100%;
   margin: 0 0.5%;
-  font-size: 3vh;
+  font-size: 5vh;
   vertical-align: top;
 }
 
 @media (max-width:1200px){
-  #buttonRand, #buttonDelete, #animations-toggle {
-    font-size: 2.5vh;
+  #buttonRand {
+    font-size: 3vh;
         }
 }
 
-#buttonRand, #buttonDelete {
+#buttonRand {
   color: #1e212b;
 }
 
-#animations-toggle {
-  color: #4d8b31;
-}
-
-
-#animLabel {
-  width:20%;
-  height:80%;
-  //background-color:red;
-  font-size: 3vh;
-}
-
 .text-entry {
-  height:70vh;
-  margin:0;
+font-size: 5vh;
+  background-color:gray;
+  height:10vh;
+  width:100%;
+  margin:1vh 0%;
   padding:0;
 }
 
-#textbox {
- width:99.5%;
- height:65vh;
- margin-top: 2%;
- margin-bottom: 0;
- margin-left: -0.5%;
- margin-right: 0; 
- padding:0 0;
- font-size:5vh;
- text-align: center;
- color: #1e212b;
+#quantityLabel {
+  margin:0 6vw;
 }
 
-@media (max-width:1200px){
-  #textbox {
-    font-size: 4vh;
-    height:59vh;
-        }
+#quantity {
+  height: 50px;
+  width: 150px;
+  font-size: 4vh;
+  margin:0 0.1vw;
 }
+
+
+
+
 

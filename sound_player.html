@@ -4,29 +4,26 @@
 <head>
 	<meta charset = "utf-8">
 	<link rel="stylesheet" href="./sound_player_styles.css">
-	<title>Randomizer and Deleter</title>
+	<title>Meditation timer</title>
 </head>
 
 <body>
 	<div class="randomizer">
 	<main>
 		<div class="title-section">
-			<h1>List Randomizer</h1>
-		</div>
-		
-		<div class="controls">
-			<button id="buttonRand"> randomize list</button>
-			<button id="buttonDelete"> randomly delete item</button>		
-			<button id="animations-toggle">turn off animation</button>	
+			<h1>Gong Timer</h1>
 		</div>
 		
 		<div class="text-entry">
-			<textarea id="textbox">
-one
-item
-per
-line</textarea>	
+ 			<label for="quantity" id="quantityLabel">Minutes:</label>
+			<input type="number" id="quantity" name="quantity" min="0" max="500"> 
 		</div>
+		
+		<div class="controls">
+			<button id="buttonRand"> play</button>	
+		</div>
+		
+
 
 
  	<audio controls id="playSound">
