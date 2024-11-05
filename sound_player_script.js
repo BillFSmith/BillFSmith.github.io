@@ -4,18 +4,26 @@ const quantity = document.querySelector("#quantity");
 
 buttonRand.onclick = playFun;
 
-let delIncr = 6000;
+
 
 function playAudio() {
   playSound.play();
 }
 
+function muteAudio() {
+  playSound.muted = true;
+}
+
+function muteAudioOff() {
+  playSound.muted = false;
+}
+
 function delButtonText(text) {
-  buttonRand.innerText = text
+  buttonRand.innerText = text;
 }
 
 function printIt(text){
-	buttonRand.innerText = text
+	buttonRand.innerText = text;
 }
 
 function printToBox(text, delay) {
@@ -31,7 +39,7 @@ function playFun() {
 	buttonRand.innerText = "playing (click to restart)";
 	printToBox("finished", delayInMs)
 	setTimeout("playAudio()", 0);
-	//setTimeout("playAudio()", delayInMs);
+	setTimeout("playAudio()", delayInMs);
 	
 	
 	//setTimeout("delButtonText()", 6000, "test");
@@ -39,13 +47,19 @@ function playFun() {
 	
 //	setTimeout("playAudio()", 6000);
 	
+	setTimeout("muteAudio()", 1000);
+	setTimeout("muteAudioOff()", delayInMs);
 	
+	let delIncr = 6000;
+	let loops = Number(quantity.value) * 10;
 	
-	for (let i=0;i<100;i++) {
+	for (let i=0;i<loops;i++) {
 		let delay = delIncr * i
 		setTimeout("playAudio()", delay);
-		
 	}
+	
+	
+	
 }
 
 
