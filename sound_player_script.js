@@ -18,6 +18,14 @@ function muteAudioOff() {
   playSound.muted = false;
 }
 
+function quietAudio() {
+  playSound.volume = 0.2;
+}
+
+function loudAudio() {
+  playSound.volume = 1;
+}
+
 function delButtonText(text) {
   buttonRand.innerText = text;
 }
@@ -47,8 +55,11 @@ function playFun() {
 	
 //	setTimeout("playAudio()", 6000);
 	
-	setTimeout("muteAudio()", 1000);
-	setTimeout("muteAudioOff()", delayInMs);
+	//setTimeout("muteAudio()", 1000);
+	//setTimeout("muteAudioOff()", delayInMs);
+	
+	setTimeout("quietAudio()", 1000);
+	setTimeout("loudAudio()", delayInMs);
 	
 	let delIncr = 6000;
 	let loops = Number(quantity.value) * 10;
