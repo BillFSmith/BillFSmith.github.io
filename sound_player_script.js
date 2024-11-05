@@ -10,18 +10,35 @@ function playAudio() {
   playSound.play();
 }
 
-function delButtonText() {
-  buttonRand.innerText = "finished"
+function delButtonText(text) {
+  buttonRand.innerText = text
 }
+
+function printIt(text){
+	buttonRand.innerText = text
+}
+
+function printToBox(text, delay) {
+	setTimeout(printIt, delay,text);
+}
+
+
+
 
 function playFun() {	
 
 	delayInMs = Number(quantity.value) * 1000 * 60;
-	//buttonRand.innerText = "playing (click to restart)"
-	buttonRand.innerText = delayInMs;
+	buttonRand.innerText = "playing (click to restart)";
+	printToBox("finished", delayInMs)
 	setTimeout("playAudio()", 0);
-	setTimeout("playAudio()", 6000);
 	setTimeout("playAudio()", delayInMs);
+	
+	
+	//setTimeout("delButtonText()", 6000, "test");
+	
+	
+//	setTimeout("playAudio()", 6000);
+	
 	
 	
 	/*for (let i=0;i<100;i++) {
