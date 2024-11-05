@@ -19,7 +19,7 @@ function muteAudioOff() {
 }
 
 function quietAudio() {
-  playSound.volume = 0.2;
+  playSound.volume = 0.01;
 }
 
 function loudAudio() {
