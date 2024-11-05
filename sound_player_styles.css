@@ -44,6 +44,16 @@ h1 {
   display:inline-block;
 }
 
+.volume-section {
+  width:99%;
+  margin:3px 7px;
+  background-color:red;
+  height:10vh;
+  display:inline-block;
+  font-size: 5vh;
+}
+
+
 .controls {
   margin-left: auto;
   margin-right: auto;

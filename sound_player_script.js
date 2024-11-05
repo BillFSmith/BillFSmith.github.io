@@ -4,7 +4,7 @@ const quantity = document.querySelector("#quantity");
 
 buttonRand.onclick = playFun;
 
-let delIncr = 10000;
+let delIncr = 6000;
 
 function playAudio() {
   playSound.play();
