@@ -27,8 +27,15 @@ function animToggleFun() {
 }
 
 function randFun() {
-  let listByLine = textList.value.split(/\r?\n/);
-
+  let listByLineAll = textList.value.split(/\r?\n/);
+  let listByLine = []
+  
+  for (let i=0; i<listByLineAll.length; i++){
+  	if (listByLineAll[i] != "") {
+  	listByLine.push(listByLineAll[i])
+  	}	
+  }
+     
   const lines = listByLine.length;
   let chosenIndex = 0
   let randomList = []
@@ -72,7 +79,14 @@ async function myDisplay(outputList) {
 }
 
 function delFun() {
-  let listByLine = textList.value.split(/\r?\n/);
+  let listByLineAll = textList.value.split(/\r?\n/);
+  let listByLine = []
+  
+  for (let i=0; i<listByLineAll.length; i++){
+  	if (listByLineAll[i] != "") {
+  	listByLine.push(listByLineAll[i])
+  	}	
+  }
   
   const lines = listByLine.length;
   let chosenIndex = Math.floor(Math.random() * lines)
