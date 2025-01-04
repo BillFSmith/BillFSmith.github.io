@@ -1,0 +1,21 @@
+{
+  "name": "print_database_1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "firebase": "^11.0.2",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "web": "^0.0.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
