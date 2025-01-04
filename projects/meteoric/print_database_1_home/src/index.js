@@ -30,8 +30,9 @@ newFormButton.onclick = async function newForm() {
 	addDoc(testCollection, { title: "hello"})
 
 	const newFormLink = document.getElementById("newFormLink")
-	newFormLink.href = window.location.pathname + "?link=" + docRef.id
-	newFormLink.href = "../../print_database_1/public/index.html" + "?link=" + docRef.id
+	// newFormLink.href = window.location.pathname + "?link=" + docRef.id
+	// newFormLink.href = "../../print_database_1/public/index.html" + "?link=" + docRef.id
+	newFormLink.href = "index.html" + "?link=" + docRef.id
 
 	document.getElementById("goToForm").style.display = ""
 }

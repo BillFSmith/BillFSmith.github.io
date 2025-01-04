@@ -95,12 +95,6 @@ window.voteButtonPress = async function(el) {
 	await updateDoc(formRef, {
 		[el.id]: voteLabelNum,
 	})
-	// console.log(el.id)
-	// console.log(el.id[0])
-	// console.log(el.id[1])
-	// console.log(el.id.split(',')[0])
-	// console.log(el.id.split(',')[1])
-	// document.getElementById('buttonRow').children[[0, el.id.split(',')[1]].toString()].style.visibility = "visible"	
 }
 
 window.activityModify = async function(el) {
@@ -185,21 +179,26 @@ const newRowButton = document.getElementById("newRowButton")
 newRowButton.onclick = async function newRow() {
 	if (rowsCount < 50) {
 		console.log("new row button pressed")
-		// newTextBox(rowsCount + 1, 1, "name", "text", nameModify)
-		
-		// for(var i=0;i<columnsCount-1;i++) {
-		// 	newButtonBox(rowsCount+1, i+2)
-		// }	
-
-		// rowsCount += 1
 		
 		const formRef = doc(db, "formData", formIDnumber)
 		await updateDoc(formRef, {
 			rows: rowsCount+1,
 		})
 	}
-	// document.getElementById("delRowButton").style.visibility = "visible"
 }
+
+// const newRowButton = document.getElementById("newRowButton")
+// newRowButton.onclick = function newRow() {
+// 	if (rowsCount < 50) {
+// 		console.log("new row button pressed")
+		
+// 		const formRef = doc(db, "formData", formIDnumber)
+// 		updateDoc(formRef, {
+// 			rows: rowsCount+1,
+// 		})
+// 	}
+// }
+
 
 // new column
 let activityBoxes = ["date", "time", "place", "activity"]
@@ -208,27 +207,25 @@ newColButton.onclick = async function newCol() {
 	if (columnsCount < 50) {
 		console.log("new column button pressed")
 
-		// newDivBox(1, columnsCount+1)
-		// newTextBox(2, columnsCount+1, "", "date", activityModify)
-		// newTextBox(3, columnsCount+1, "", "time", activityModify)
-		// newTextBox(4, columnsCount+1, "place", "text", activityModify)
-		// newTextBox(5, columnsCount+1, "activity", "text", activityModify)
-
-		// document.getElementById('buttonRow').style.gridTemplateColumns = `repeat(${columnsCount+1}, 1fr)`
-
-		// for(var i=0;i<rowsCount-5;i++) {
-		// 	newButtonBox(6 + i, columnsCount+1)
-		// }	
-
-		// columnsCount += 1
-
 		const formRef = doc(db, "formData", formIDnumber)
 		await updateDoc(formRef, {
 			columns: columnsCount+1,
 		})
 	}
-	// document.getElementById("delColButton").style.visibility = "visible"
 }
+
+// let activityBoxes = ["date", "time", "place", "activity"]
+// const newColButton = document.getElementById("newColButton")
+// newColButton.onclick = function newCol() {
+// 	if (columnsCount < 50) {
+// 		console.log("new column button pressed")
+
+// 		const formRef = doc(db, "formData", formIDnumber)
+// 		updateDoc(formRef, {
+// 			columns: columnsCount+1,
+// 		})
+// 	}
+// }
 
 
 const delRowButton = document.getElementById("delRowButton")
@@ -237,16 +234,6 @@ delRowButton.onclick = async function rowDelete() {
 	console.log("delRowButton pressed")
 	console.log(elements)
 	if (rowsCount > 5) {
-		// console.log(rowsCount)
-		// const parent = document.getElementById("buttonRow");
-		// for (var i = 0; i<columnsCount; i++) {
-			
-		// 	const child = document.getElementById([rowsCount-1, i].toString());
-		// 	const throwawayNode = parent.removeChild(child);
-		// }
-
-		// rowsCount -= 1 
-
 		totalUp()
 
 		const formRef = doc(db, "formData", formIDnumber)
@@ -267,14 +254,6 @@ delRowButton.onclick = async function rowDelete() {
 const delColButton = document.getElementById("delColButton")
 delColButton.onclick = async function colDelete() {
 	if (columnsCount > 1) {
-		// const parent = document.getElementById("buttonRow");
-		// for (var i = 0; i<rowsCount; i++) {
-		// 	const child = document.getElementById([i, columnsCount-1].toString());
-		// 	const throwawayNode = parent.removeChild(child);
-		// }
-
-		// columnsCount -= 1
-		// document.getElementById('buttonRow').style.gridTemplateColumns = `repeat(${columnsCount}, 1fr)`
 
 		const formRef = doc(db, "formData", formIDnumber)
 		await updateDoc(formRef, {
@@ -288,6 +267,23 @@ delColButton.onclick = async function colDelete() {
 		}
 	}
 }
+
+// const delColButton = document.getElementById("delColButton")
+// delColButton.onclick = function colDelete() {
+// 	if (columnsCount > 1) {
+
+// 		const formRef = doc(db, "formData", formIDnumber)
+// 		updateDoc(formRef, {
+// 			columns: columnsCount-1,
+// 		})
+
+// 		for (var i=0; i<rowsCount; i++){
+// 			updateDoc(formRef, {
+// 				[[i, columnsCount]]: deleteField(),
+// 			})
+// 		}
+// 	}
+// }
 
 // // LOAD
 // document.getElementById("loadIDValue").value = "L4NO0jHUxRyXyid4bylW"
@@ -490,17 +486,19 @@ const unsubThree = onSnapshot(doc(db, 'formData',formIDnumber), (doc) => {
 				newButtonBox(i, j, "Neutral")
 			}	
 		}
-	} else if (columns < rowsCount) {
+	} else if (columns < columnsCount) {
+		console.log('column count changed')
 		// const parent = document.getElementById("buttonRow");
 		for (var i = 0; i<rows; i++) {
-			// for (var j = columns; j<columnsCount; j++) {
-			for (var j = columns; j<50; j++) {
+			for (var j = columns; j<columnsCount; j++) {
+			// for (var j = columns; j<50; j++) {
 				// for (var j = columnsCount; j>columns; j--) {
 				// const child = document.getElementById([i, j].toString());
 				// const throwawayNode = parent.removeChild(child);			
 				if (document.getElementById('buttonRow').children.hasOwnProperty([i, j].toString())){
 
 					document.getElementById("buttonRow").removeChild(document.getElementById([i, j].toString()))
+					console.log([i, j].toString())
 				}
 			}
 		}
