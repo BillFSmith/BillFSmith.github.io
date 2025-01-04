@@ -493,14 +493,15 @@ const unsubThree = onSnapshot(doc(db, 'formData',formIDnumber), (doc) => {
 	} else if (columns < rowsCount) {
 		// const parent = document.getElementById("buttonRow");
 		for (var i = 0; i<rows; i++) {
-			for (var j = columns; j<columnsCount; j++) {
+			// for (var j = columns; j<columnsCount; j++) {
+			for (var j = columns; j<50; j++) {
 				// for (var j = columnsCount; j>columns; j--) {
 				// const child = document.getElementById([i, j].toString());
 				// const throwawayNode = parent.removeChild(child);			
-				// if (document.getElementById('buttonRow').children.hasOwnProperty([i, j].toString())){
+				if (document.getElementById('buttonRow').children.hasOwnProperty([i, j].toString())){
 
 					document.getElementById("buttonRow").removeChild(document.getElementById([i, j].toString()))
-				// }
+				}
 			}
 		}
 	}
