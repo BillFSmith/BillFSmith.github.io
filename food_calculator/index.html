@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meteoric - Form</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="../public/main.css"> -->
+    <link rel="stylesheet" href="print_database_1/public/main.css">
+     <script src=https://cdnjs.cloudflare.com/ajax/libs/mathjs/14.0.1/math.js></script>
+</head>
+<body>
+
+    <h1><a id="homeLink" href="home.html">Food Calculator</a></h1>
+
+    <div class="macros-grid-container" id="macrosGrid">
+        <div class="grid-item" id="caloriesGrid" style="background-color: #93BC64; grid-column: 1/3;">Calories</div>
+        <div class="grid-item" id="costGrid" style="background-color: #93BC64; grid-column: 3/5;">Cost</div>
+        <div class="grid-item" id="sugarGrid" style="background-color: #93BC64; grid-column: 5/7;">Sugar</div>
+        <div class="grid-item" id="sodiumGrid" style="background-color: #93BC64; grid-column: 7/9;">Salt</div>
+        <div class="grid-item" id="proteinGrid" style="background-color: #7E1C29; grid-column: 9/11;">Protein</div>
+    </div>
+        
+    <div class="grid-container" id="microsGrid">
+        <div class="grid-item" id="Vitamin A  (RAE)" style="background-color: #7E1C29;">Vitamin A  (RAE)</div>
+        <div class="grid-item" id="Vitamin C" style="background-color: #7E1C29;">Vitamin C</div>
+        <div class="grid-item" id="Calcium" style="background-color: #7E1C29;">Calcium</div>
+        <div class="grid-item" id="Iron" style="background-color: #7E1C29;">Iron</div>
+        <div class="grid-item" id="Vitamin D" style="background-color: #7E1C29;">Vitamin D</div>
+        <div class="grid-item" id="Vitamin E" style="background-color: #7E1C29;">Vitamin E</div>
+        <div class="grid-item" id="Vitamin K" style="background-color: #7E1C29;">Vitamin K</div>
+        <div class="grid-item" id="Thiamin (B1)" style="background-color: #7E1C29;">Thiamin (B1)</div>
+        <div class="grid-item" id="Riboflavin (B2)" style="background-color: #7E1C29;">Riboflavin (B2)</div>
+        <div class="grid-item" id="Niacin (B3) (NE)" style="background-color: #7E1C29;">Niacin (B3)</div>
+        <div class="grid-item" id="Vitamin B6" style="background-color: #7E1C29;">Vitamin B6</div>
+        <div class="grid-item" id="Folate (B9) (DFE)" style="background-color: #7E1C29;">Folate (B9)</div>
+        <div class="grid-item" id="Vitamin B12" style="background-color: #7E1C29;">B12</div>
+        <div class="grid-item" id="Biotin (B7)" style="background-color: #7E1C29;">Biotin (B7)</div>
+        <div class="grid-item" id="Pantothenic acid" style="background-color: #7E1C29;">B5</div>
+        <div class="grid-item" id="Phosphorus" style="background-color: #7E1C29;">Phosphorus</div>
+        <div class="grid-item" id="Iodine" style="background-color: #7E1C29;">Iodine</div>
+        <div class="grid-item" id="Magnesium" style="background-color: #7E1C29;">Magnesium</div>
+        <div class="grid-item" id="Zinc" style="background-color: #7E1C29;">Zinc</div>
+        <div class="grid-item" id="Selenium" style="background-color: #7E1C29;">Selenium</div>
+        <div class="grid-item" id="Copper" style="background-color: #7E1C29;">Copper</div>
+        <div class="grid-item" id="Manganese" style="background-color: #7E1C29;">Manganese</div>
+        <div class="grid-item" id="Potassium" style="background-color: #7E1C29;">Potassium</div>
+    </div>
+
+    <div class="food-input-section">
+        <div class="search-section">
+            <div class="controls-grid">
+                <div class="quantitiesHeader" style = "grid-column:1/4; grid-row:1">Find a Food:</div>
+                <input type="text" id="foodSearchText" style = "grid-column:1/3; grid-row:2">
+                <button type="button" id="foodSearchButton" style = "grid-column:3/4; grid-row:2">Search</button>
+                <div class="dropdown" style = "grid-column:1/4; grid-row:3">
+                    <button class="dropbtn" id="searchDrop">Search results</button>
+                        <div class="dropdown-content" id="dropContent">
+                            <p>Type in box above and press enter to search for a food</p>
+                        </div>
+                </div>
+            </div>
+        </div>      
+
+        <div class="controls-section">
+            <div class="controls-grid">
+                <div class="quantitiesHeader" style = "grid-column:1/4; grid-row:1">Recommended Food:</div>
+                <button type="button" id="foodButton" style = "grid-column:1/4; grid-row:2">Food item name</button>
+                <div class="quantitiesDay" style = "grid-column:2/3; grid-row:3">
+                    <div id="gDayValue">20</div>
+                    <div id="gDayLabel">g/day, </div>
+                    <div id="gWeekValue">140</div>
+                    <div id="gWeekLabel">g/week</div>
+                </div>  
+                <button type="button" id="upButton" style = "grid-column:2/3; grid-row:5">↑ More</button>
+                <button type="button" id="downButton" style = "grid-column:2/3; grid-row:6">↓ Less</button>
+                <button type="button" id="removeButton" style = "grid-column:1/2; grid-row:6">← Remove</button>
+                <button type="button" id="eatButton" style = "grid-column:3/4; grid-row:6">Add →</button>
+            </div>
+        </div>      
+
+
+    </div>
+    
+    <div class="food-choices">
+        <div class="food-additions">
+            <div class="food-grid-button">
+                <button type="button" id="showAddedFoods">Hide Added foods</button>
+            </div>
+            <div class="food-grid-container" id="foodGrid"></div>
+        </div>
+
+        <div class="food-removals">
+            <div class="food-grid-button">
+                <button type="button" id="showRemovedFoods">Show Removed Foods</button>
+            </div>
+
+            <div class="removed-grid-container" id="removedGrid" style="display: none;"></div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="test-buttons">
+        <button type="button" id="testButton1" style = "display: none;">testButton1</button>
+        <button type="button" id="testButton2" style = "display: none;">testButton2</button>
+        <button type="button" id="testButton3" style = "display: none;">testButton3</button>
+        <button type="button" id="testButton4" style = "display: none;">testButton4</button>
+    </div> 
+
+    <div class="notEating" style = "display: none;">
+        <div id="notEatingLabel">Not eating</div>
+        <div id="notEatingFood"></div>
+    </div>  
+    <br>
+    <div class="eating" style = "display: none;">
+        <div id="eatingLabel">Eating</div>
+        <div id="eatingFood"></div>
+    </div>  
+    <br>
+    <div class="nutrientData" style = "display: none;">
+        <div id="nutrientLabel">Nutrition info</div>
+        <div id="nutrientInfo"></div>
+        <div id="nutrientInfo2"></div>
+        <div id="nutrientInfo3"></div>
+    </div>  
+
+
+    <script type="module"  src="print_database_1/dist/main.js"> </script>
+</body>
+</html>
+

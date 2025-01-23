@@ -1,0 +1,328 @@
+body {
+  background-color: #2196F3;
+}
+
+.macros-grid-container {
+  display: grid;
+  grid-template-columns:  repeat(10, 1fr);
+  background-color: #2196F3;
+  padding: 5px;
+  /* align-content: center; */
+  /* justify-content: center; */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns:  repeat(12, 1fr);
+    background-color: #2196F3;
+    padding: 5px;
+    /* width: 70vw; */
+    /* align-content: center; */
+    /* justify-content: center; */
+}
+
+
+
+.removed-grid-container {
+  display: grid;
+  grid-template-columns:  repeat(6, 1fr);
+  background-color: #2196F3;
+  padding: 5px;
+  width: 80vw;
+  margin-left: 10vw;
+  /* align-content: center; */
+  /* justify-content: center; */
+}
+
+h1, #homeLink {
+  margin-top: 0vh;
+  padding: 0;
+  text-align: center;
+  font-size: 6vh;
+  color: #ebebeb;
+  font-family: "Lucida Grande"
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  /* border: 1px solid rgba(0, 0, 0, 0.8); */
+  margin: 3px;
+  align-content: center;
+  justify-content: center;
+  vertical-align: middle;
+  line-height: 50px;
+  font-size: 20px;
+  display: flex;
+  max-width: 500px;
+  /* color: #d9480f; */
+  /* background-color: #2196F3; */
+  min-width: 100px;
+  height: 50px;
+  text-align: center; 
+}
+
+.food-grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  /* border: 1px solid rgba(0, 0, 0, 0.8); */
+  margin: 3px;
+  align-content: center;
+  justify-content: center;
+  vertical-align: middle;
+  line-height: 50px;
+  font-size: 20px;
+  display: flex;
+  max-width: 500px;
+  /* color: #d9480f; */
+  /* background-color: #2196F3; */
+  min-width: 100px;
+  height: 50px;
+  text-align: center; 
+}
+
+.grid-button {
+  /* background-color: rgba(255, 255, 255, 0.8); */
+  /* border: 1px solid rgba(0, 0, 0, 0.8); */
+  margin: 3px;
+  align-content: center;
+  justify-content: center;
+  font-size: 25px;
+  /* display: flex; */
+  max-width: 500px;
+  /* color: #d9480f; */
+  /* background-color: #2196F3; */
+  min-width: 100px;
+  height: 50px;
+  border-radius: 10px;
+}
+
+#foodSearchButton {
+  font-size: 25px;
+}
+
+/* .quantities {
+  display: inline;
+} */
+
+#gDayValue, #gDayLabel, #gWeekValue, #gWeekLabel {
+  display: inline-block;
+}
+
+::placeholder {
+  color: gray;
+  opacity: 0.5; /* Firefox */
+}
+
+.newForm {
+  width: 100vw;
+  /* display: inline; */
+  margin-left: 1%;
+}
+
+#newFormButton, #newFormValue {
+  width:23.5%;
+  /* height:100%; */
+  font-size: 20px;
+  margin: 0.5% 0.3%;
+  padding: 0;
+}
+
+
+
+.food-input-section{
+  background-color: #2196F3;
+}
+.search-section{
+  margin-left: 3vw;
+  background-color:#C7DBBD;
+  width: 44vw;
+  margin-top: 5vh;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+  margin-left: 7vw;
+  margin-right: 2vw;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  display:inline-block;
+  /* border-style: solid; */
+}
+
+.controls-section{
+  margin-left: 3vw;
+  background-color: #DDD6B3;
+  width: 35vw;
+  margin-top: 5vh;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+  margin-left: 2vw;
+  margin-right: 2vw;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  display:inline-block;
+  /* border-style: dotted; */
+}
+.controls-item {
+  /* width: 100vw; */
+  /* display: inline; */
+  margin-left: 1%;
+  height: 10vh;
+  
+  /* background-color: red; */
+}
+
+.controls-grid {
+  display: grid;
+  grid-template-columns:  repeat(3, 1fr);
+  /* background-color: #2196F3; */
+  padding: 5px;
+  /* font-size: 20px; */
+  height: 30vh;
+  /* width: 70vw; */
+  /* align-content: center; */
+  /* justify-content: center; */
+}
+
+#upButton, #downButton, #removeButton ,#eatButton, #foodButton {
+  /* width:23.5%; */
+  /* height:80%; */
+  font-size: 25px;
+  /* margin: 0.5% 0.3%; */
+  padding: 0;
+}
+
+.quantitiesHeader {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+
+.quantitiesDay {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 5px;
+  /* padding-bottom: 20px; */
+}
+
+/* .totalsClass {
+  width: 50px;
+  color: #d9480f;
+  align-items: center;
+  justify-items: center;
+} */
+
+
+
+
+
+  * {
+    box-sizing: border-box;
+  }
+
+  #foodSearchText {
+    font-size: 20px;
+  }
+
+
+   /* Dropdown Button */
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  margin-top: 10px;
+  width: 100%;
+
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  width: 37.5vw;
+
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropbtn {background-color: #3e8e41;} 
+
+.food-choices {
+  background-color: #E7E4BF;
+  /* border-style: dashed; */
+  margin: 2vw;
+  /* align-items: center; */
+}
+
+.food-grid-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 200px; */
+  /* border: 3px solid green;  */
+}
+
+.food-additions  {
+  /* background-color: green; */
+  /* border: #04AA6D; */
+  width: 95%;
+  margin: 2vw;
+}
+
+.food-removals  {
+  /* background-color: orange; */
+  /* border: #04AA6D; */
+  width: 95%;
+  margin: 2vw;
+}
+
+.food-grid-container {
+  display: grid;
+  grid-template-columns:  repeat(6, 1fr);
+  /* background-color: #2196F3; */
+  /* background-color: burlywood; */
+  padding: 5px;
+  width: 86vw;
+  margin-left: 2vw;
+  /* align-content: center; */
+
+  /* align-content: center; */
+  /* justify-content: center; */
+}
+
+.removed-grid-container {
+  display: grid;
+  grid-template-columns:  repeat(6, 1fr);
+  background-color: #E7E4BF;
+  /* background-color: burlywood; */
+  padding: 5px;
+  width: 86vw;
+  margin-left: 2vw;
+  /* align-content: center; */
+
+  /* align-content: center; */
+  /* justify-content: center; */
+}
+
+#showAddedFoods, #showRemovedFoods {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
