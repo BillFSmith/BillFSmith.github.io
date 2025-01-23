@@ -269,6 +269,7 @@ h1, #homeLink {
   background-color: #E7E4BF;
   /* border-style: dashed; */
   margin: 2vw;
+  /* margin-top: vh; */
   /* align-items: center; */
 }
 
@@ -325,4 +326,5 @@ h1, #homeLink {
 #showAddedFoods, #showRemovedFoods {
   font-size: 20px;
   margin-bottom: 20px;
+  margin-top: 10px;
 }

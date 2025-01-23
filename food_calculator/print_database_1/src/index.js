@@ -170,7 +170,7 @@ var dailyLimits = {
 	"Energy (kcal) (kcal)": 2000,
 	"cost_per_100g": 4,
 	// "Total sugars (g)": 10,			// why is this so low?
-	"Total sugars (g)": 50,			
+	"Total sugars (g)": 70,			
 	"Sodium (mg)": 2000,
 	"Protein (g)": 60,
 }
@@ -249,8 +249,8 @@ downButton.onclick = function(){
 	downFood()
 }
 
-// var incMicroList = ["Vitamin A  (RAE)", "Vitamin C", "Calcium", "Iron", "Vitamin D", "Vitamin E", "Vitamin K", "Thiamin (B1)", "Riboflavin (B2)", "Niacin (B3) (NE)", "Vitamin B6", "Folate (B9) (DFE)", "Vitamin B12", "Biotin (B7)", "Pantothenic acid", "Phosphorus", "Iodine", "Magnesium", "Zinc", "Selenium", "Copper", "Manganese", "Potassium"]
-var incMicroList = ["Vitamin A  (RAE)", "Vitamin C", "Iron", "Vitamin E", "Vitamin K", "Thiamin (B1)", "Riboflavin (B2)", "Niacin (B3) (NE)", "Vitamin B6", "Folate (B9) (DFE)", "Biotin (B7)", "Pantothenic acid", "Phosphorus", "Magnesium", "Zinc", "Selenium", "Copper", "Manganese", "Potassium"]
+var incMicroList = ["Vitamin A  (RAE)", "Vitamin C", "Calcium", "Iron", "Vitamin D", "Vitamin E", "Vitamin K", "Thiamin (B1)", "Riboflavin (B2)", "Niacin (B3) (NE)", "Vitamin B6", "Folate (B9) (DFE)", "Vitamin B12", "Biotin (B7)", "Pantothenic acid", "Phosphorus", "Iodine", "Magnesium", "Zinc", "Selenium", "Copper", "Manganese", "Potassium"]
+// var incMicroList = ["Vitamin A  (RAE)", "Vitamin C", "Iron", "Vitamin E", "Vitamin K", "Thiamin (B1)", "Riboflavin (B2)", "Niacin (B3) (NE)", "Vitamin B6", "Folate (B9) (DFE)", "Biotin (B7)", "Pantothenic acid", "Phosphorus", "Magnesium", "Zinc", "Selenium", "Copper", "Manganese", "Potassium"]
 var calcMicro = {}
 for (const micro of incMicroList) {
 	calcMicro[micro] = 0 
