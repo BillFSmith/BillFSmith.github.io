@@ -227,9 +227,9 @@ var macroUpToColour = ["#7E1C29", "#7E1C29", "#C95328", "#C95328", "#DDCF80", "#
 
 
 
-foodButton = document.getElementById("foodButton")
-upButton = document.getElementById("upButton")
-downButton = document.getElementById("downButton")
+// foodButton = document.getElementById("foodButton")
+// upButton = document.getElementById("upButton")
+// downButton = document.getElementById("downButton")
 
 window.upFood = function() {
 	document.getElementById("gDayValue").textContent = Number(document.getElementById("gDayValue").textContent) + 5
@@ -831,21 +831,11 @@ window.addEventListener("keydown", function (event) {
 
   // check if micronutrients can be too much
 
-
-  // make eatingFoodsList and removedFoods to be the same forma
-  // i.e. key value pair of food name and quantity
-  // this means that the removed foods list can display previous values and can be added to
-  // hide eat less and add food buttons until eat more is clicked (on removed list)
-
-
-  // add buttons to hide eating list and removed list
-
   // add export data button
   // add graph button
   // add import food button
 
   // sort out food names
 
-  // sort out low sugar count (check if it affects suggestions)
-  
-  // have Show added foods toggle to Hide added foods
+  // check why it doesn't work on chrome
+  // add arrow keys explanation
