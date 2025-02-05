@@ -33,9 +33,17 @@ testButton1.onclick = function() {
 }
 
 import sourceData from "../../temp(vegan3).json";
-import displayNames from "../../display_names.json";
-import collections from "../../collections.json";
-import foodCompanions from "../../food_companions.json";
+// import displayNames from "../../display_names.json";
+import displayNames from "../../vegan_display_names.json";
+// import collections from "../../collections.json";
+import collections from "../../vegan_collections.json";
+// import foodCompanions from "../../food_companions.json";
+import foodCompanions from "../../vegan_food_companions.json";
+import matchings_top_all from "../../matchings_top_all.json";
+import matchings_top_tesco from "../../matchings_top_tesco.json";
+import matchings_top_sains from "../../matchings_top_sains.json";
+
+// console.log(matchings_top_all)
 
 
 testButton2.onclick = function() {
@@ -213,10 +221,21 @@ var microToID = {
 	"Potassium": "Potassium",
 }
 
-var microToColour = ["#7E1C29", "#7E1C29", "#C95328", "#C95328", "#DDCF80", "#DDCF80", "#B2CA7F", "#B2CA7F", "#93BC64", "#93BC64"]
+var microToColour = ["#EC6B5F", "#EC6B5F", "#E4B16D", "#E4B16D", "#DDCF80", "#DDCF80", "#B2CA7F", "#B2CA7F", "#93BC64", "#93BC64"]
 
-var macroToColour = ["#93BC64",	"#93BC64","#B2CA7F","#B2CA7F","#DDCF80","#DDCF80","#C95328","#C95328","#7E1C29","#7E1C29"]
-var macroUpToColour = ["#7E1C29", "#7E1C29", "#C95328", "#C95328", "#DDCF80", "#DDCF80", "#B2CA7F", "#B2CA7F", "#93BC64", "#93BC64"]
+var macroToColour = ["#93BC64",	"#93BC64","#B2CA7F","#B2CA7F","#DDCF80","#DDCF80","#E4B16D","#E4B16D","#EC6B5F","#EC6B5F"]
+var macroUpToColour = ["#EC6B5F", "#EC6B5F", "#E4B16D", "#E4B16D", "#DDCF80", "#DDCF80", "#B2CA7F", "#B2CA7F", "#93BC64", "#93BC64"]
+
+const nutrientDisplayNames = {
+	"Energy (kcal) (kcal)": "Energy, calories",
+	"cost_per_100g": "Cost, £",
+	"Total sugars (g)": "Sugar, g",
+	"Sodium (mg)": "Sodium, mg",
+	"Protein (g)": "Protein,  g"
+}
+
+
+// consider colour blind options
 
 
 
@@ -224,9 +243,7 @@ var macroUpToColour = ["#7E1C29", "#7E1C29", "#C95328", "#C95328", "#DDCF80", "#
 
 
 
-
-
-
+// below code doesn't work in chrome
 // foodButton = document.getElementById("foodButton")
 // upButton = document.getElementById("upButton")
 // downButton = document.getElementById("downButton")
@@ -267,6 +284,10 @@ var calcMacroUp= {}
 for (const macro of incMacroUpList) {
 	calcMacro[macro] = 0 
 }
+
+
+
+var selectedOptions = {}
 
 window.findBestFood = function() {
 	console.log("findBestFood")
@@ -357,11 +378,66 @@ window.findBestFood = function() {
 
 	// foodButton.innerHTML = bestRow
 	foodButton.innerHTML = displayNames[bestRow]
+
+	// console.log("foodCompanions", collections[foodCompanions[bestRow]])
+
+	selectedOptions = {}
+
+	const myNode = document.getElementById("options-list");
+	while (myNode.firstChild) {
+	  myNode.removeChild(myNode.lastChild);
+	}
+
+	const foodDiv = document.createElement("button");
+	foodDiv.innerHTML = bestRow
+	foodDiv.name = bestRow
+	foodDiv.style.fontSize = "20px"
+	foodDiv.style.margin = "0.2vh"
+	foodDiv.style.backgroundColor = "darkseagreen"
+	foodDiv.addEventListener("click", foodOptionFunction);
+	document.getElementById("options-list").appendChild(foodDiv)
+	selectedOptions[bestRow] = true
+
+	for (const companion of collections[foodCompanions[bestRow]]){
+		if (companion !== bestRow){
+			const foodDiv = document.createElement("button");
+			foodDiv.innerHTML = companion
+			foodDiv.name = companion
+			foodDiv.style.fontSize = "20px"
+			foodDiv.style.margin = "0.2vh"
+			foodDiv.addEventListener("click", foodOptionFunction);
+			document.getElementById("options-list").appendChild(foodDiv)
+			selectedOptions[companion] = false
+		}
+	}
 	
 	// }
 }
 
+window.foodOptionFunction = function(el){
+	var foodName = el.target.name
+	// if (foodName in Object.entries(selectedOptions) && selectedOptions[foodName] === true){
+	if (selectedOptions[foodName] === true){
+		el.target.style.backgroundColor = ""
+		selectedOptions[foodName] = false
+	} else {
+		el.target.style.backgroundColor = "darkseagreen"
+		selectedOptions[foodName] = true
+	}
+	console.log("foodName", foodName)
+	console.log("selectedOptions", selectedOptions)
+
+}
+
 findBestFood()
+
+
+
+
+
+
+
+
 
 var removedFoods = {}
 // var removedFoodsList = []
@@ -465,21 +541,43 @@ window.generateEatingList = function () {
 	  myNode.removeChild(myNode.lastChild);
 	}
 
+	const myNodeT = document.getElementById("shoppingListTesco");
+	while (myNodeT.firstChild) {
+		myNodeT.removeChild(myNodeT.lastChild);
+	}
+
+	const myNodeS = document.getElementById("shoppingListSains");
+	while (myNodeS.firstChild) {
+		myNodeS.removeChild(myNodeS.lastChild);
+	}
+
+	const myNodeE = document.getElementById("exportGrid");
+	while (myNodeE.firstChild) {
+		myNodeE.removeChild(myNodeE.lastChild);
+	}
+
+
+	console.log(Object.entries(eatFoodsList))
 	for (const[key,value] of Object.entries(eatFoodsList)){	
 		const newDiv = document.createElement("div");
 		newDiv.innerHTML = key
 		newDiv.style.gridColumn = "1/3"
-		document.getElementById("foodGrid").appendChild(newDiv)
+		document.getElementById("foodGrid").appendChild(newDiv)		
 
 		const quantityDiv = document.createElement("div");
-		// quantityDiv.innerHTML = document.getElementById("gDayValue").textContent
-		quantityDiv.innerHTML = value + "g/day,        " + value * 7 + "g/week"
+		quantityDiv.innerHTML = Number(value).toFixed() + "g/day,        " + (Number(value) * 7).toFixed() + "g/week"
 		quantityDiv.style.verticalAlign = "middle"
 		quantityDiv.style.justifyContent = "center"
 		quantityDiv.style.alignContent = "center"
 		quantityDiv.style.display = "flex"
 		quantityDiv.style.whiteSpace = "pre"
 		document.getElementById("foodGrid").appendChild(quantityDiv)
+
+		const inputDiv = document.createElement("input");
+		inputDiv.name = key
+		inputDiv.placeholder = "enter g/week"
+		inputDiv.addEventListener("change", inputFunction);
+		document.getElementById("foodGrid").appendChild(inputDiv)
 
 		const minusDiv = document.createElement("button");
 		minusDiv.innerHTML = "eat less"
@@ -498,7 +596,66 @@ window.generateEatingList = function () {
 		binDiv.name = key
 		binDiv.addEventListener("click", binFunction);
 		document.getElementById("foodGrid").appendChild(binDiv)
+
+		// shopping lists
+		// tesco
+		const newDivT = document.createElement("div");
+		newDivT.innerHTML = key
+		newDivT.style.gridColumn = "1/4"
+		document.getElementById("shoppingListTesco").appendChild(newDivT)
+
+		const quantityDivT = document.createElement("div");
+		quantityDivT.innerHTML = Number(value).toFixed() + "g/day,        " + (Number(value) * 7).toFixed() + "g/week"
+		quantityDivT.style.verticalAlign = "middle"
+		quantityDivT.style.justifyContent = "center"
+		quantityDivT.style.alignContent = "center"
+		quantityDivT.style.display = "flex"
+		quantityDivT.style.whiteSpace = "pre"
+		document.getElementById("shoppingListTesco").appendChild(quantityDivT)
+
+		const supermarketDivT = document.createElement("div");
+		supermarketDivT.innerHTML = matchings_top_tesco[key]
+		supermarketDivT.style.gridColumn = "5/8"
+		document.getElementById("shoppingListTesco").appendChild(supermarketDivT)
+
+
+		// sainsburys
+		const newDivS = document.createElement("div");
+		newDivS.innerHTML = key
+		newDivS.style.gridColumn = "1/4"
+		document.getElementById("shoppingListSains").appendChild(newDivS)
+
+		const quantityDivS = document.createElement("div");
+		quantityDivS.innerHTML = Number(value).toFixed() + "g/day,        " + (Number(value) * 7).toFixed() + "g/week"
+		quantityDivS.style.verticalAlign = "middle"
+		quantityDivS.style.justifyContent = "center"
+		quantityDivS.style.alignContent = "center"
+		quantityDivS.style.display = "flex"
+		quantityDivS.style.whiteSpace = "pre"
+		document.getElementById("shoppingListSains").appendChild(quantityDivS)
+
+		const supermarketDivS = document.createElement("div");
+		supermarketDivS.innerHTML = matchings_top_sains[key]
+		supermarketDivS.style.gridColumn = "5/8"
+		document.getElementById("shoppingListSains").appendChild(supermarketDivS)
+
+		// export data
+		const newDivE = document.createElement("div");
+		newDivE.innerHTML = "Food Name: " + key
+		newDivE.style.gridColumn = "1/4"
+		document.getElementById("exportGrid").appendChild(newDivE)
+
+		const quantityDivE = document.createElement("div");
+		quantityDivE.innerHTML = "Quantity: " + Number(value).toFixed()
+		quantityDivE.style.verticalAlign = "middle"
+		quantityDivE.style.justifyContent = "center"
+		quantityDivE.style.alignContent = "center"
+		quantityDivE.style.display = "flex"
+		quantityDivE.style.whiteSpace = "pre"
+		document.getElementById("exportGrid").appendChild(quantityDivE)
+	
 	}
+	console.log("finished generating")
 
 }
 
@@ -516,7 +673,6 @@ window.minusFunction = function(el){
 	document.getElementById("eatingFood").textContent = JSON.stringify(eatFoodsList)
 	document.getElementById("nutrientInfo2").textContent = JSON.stringify(calcMicro)
 	document.getElementById("nutrientInfo3").textContent = JSON.stringify(calcMacro)
-
 }
 
 window.plusFunction = function(el){
@@ -533,8 +689,27 @@ window.plusFunction = function(el){
 	document.getElementById("eatingFood").textContent = JSON.stringify(eatFoodsList)
 	document.getElementById("nutrientInfo2").textContent = JSON.stringify(calcMicro)
 	document.getElementById("nutrientInfo3").textContent = JSON.stringify(calcMacro)
-
 }
+
+window.inputFunction = function(el){
+	const foodName = el.target.name
+	console.log(foodName)
+	console.log(el.target.value)
+
+	if (foodName in eatFoodsList) {
+		eatFoodsList[foodName] = Math.min(Number(el.target.value) / 7, 1000)
+		generateEatingList()
+	} else {
+		removedFoodsList[foodName] = Math.min(Number(el.target.value) / 7, 1000)
+		generateRemovedList()
+	}
+
+	updateNutrients()
+	document.getElementById("eatingFood").textContent = JSON.stringify(eatFoodsList)
+	document.getElementById("nutrientInfo2").textContent = JSON.stringify(calcMicro)
+	document.getElementById("nutrientInfo3").textContent = JSON.stringify(calcMacro)
+}
+
 
 window.binFunction = function(el){
 	console.log("bin")
@@ -577,14 +752,27 @@ window.unBinFunction = function(el){
 
 
 
+// section to check if items are included in a collection but aren't in the sourceData
+// i.e. butter beans in beans section
+// find why butter beans aren't in ... oh it's because butter is in the name
+// remove items in collections that arent in sourceData
 
+// console.log(collections)
 
+// console.log(sourceData["Beans butter dried boiled in unsalted water"])
 
+for (const [key,value] of Object.entries(collections)) {
+	// console.log(value)
+	for (const item of value) {
+		// console.log("food data")
+		// console.log(item)
+		// console.log(sourceData[item])
+		if (!(item in sourceData)) {
+			console.log("no")
+		}
 
-
-
-
-
+	}
+}
 
 
 
@@ -595,6 +783,7 @@ var eatFoods = {}
 var eatFoodsList = {}
 
 window.updateNutrients = function() {
+	console.log("resetting nutrients")
 	for (const micro of incMicroList) {
 		calcMicro[micro] = 0 
 	}
@@ -604,55 +793,133 @@ window.updateNutrients = function() {
 	for (const macro of incMacroUpList) {
 		calcMacro[macro] = 0 
 	}
+	console.log("building nutrients")
+	console.log(eatFoodsList)
+
+
 
 	for (const[key,value] of Object.entries(eatFoodsList)){		// key: food name, value: g/day
+		console.log(key,value)
 		for (const micro of incMicroList) {						// loop over micro name
+			console.log("micro")
+			console.log(micro)
+			console.log(eatFoods[key])
+			console.log(eatFoods[key][micro])
 			calcMicro[micro] += eatFoods[key][micro] * value / 100
 			var microColour = Math.min(Math.floor(calcMicro[micro] * 10), 9)
 			document.getElementById(microToID[micro]).style.backgroundColor = microToColour[microColour]
 		}
-
+		
 		for (const macro of incMacroList) {						// loop over macro name
+			console.log("macro")
+			console.log(macro)
 			calcMacro[macro] += eatFoods[key][macro] * value / 100
 			var macroColour = Math.min(Math.floor(calcMacro[macro] * 10/dailyLimits[macro]), 9)
 			document.getElementById(macroToID[macro]).style.backgroundColor = macroToColour[macroColour]
 		}
 
 		for (const macro of incMacroUpList) {						// loop over macro name (protein)
+			console.log("macro up")
+			console.log(macro)
 			calcMacro[macro] += eatFoods[key][macro] * value / 100
 			var macroColour = Math.min(Math.floor(calcMacro[macro] * 10/dailyLimits[macro]), 9)
 			document.getElementById(macroUpToID[macro]).style.backgroundColor = macroUpToColour[macroColour]
 		}
 	}
+
+	const myNode = document.getElementById("detailedNutrientGrid");
+	while (myNode.firstChild) {
+	  myNode.removeChild(myNode.lastChild);
+	}
+	for (const macro of incMacroList) {						// loop over macro name
+		const newDivT = document.createElement("div");
+		newDivT.innerHTML = nutrientDisplayNames[macro]
+		newDivT.style.gridColumn = "1/2"
+		document.getElementById("detailedNutrientGrid").appendChild(newDivT)
+		
+		const newDivQ = document.createElement("div");
+		newDivQ.innerHTML = calcMacro[macro].toFixed(2)
+		newDivQ.style.gridColumn = "2/3"
+		document.getElementById("detailedNutrientGrid").appendChild(newDivQ)
+	}
+	for (const macro of incMacroUpList) {						// loop over macro name (protein)
+		const newDivT = document.createElement("div");
+		newDivT.innerHTML = nutrientDisplayNames[macro]
+		newDivT.style.gridColumn = "1/2"
+		document.getElementById("detailedNutrientGrid").appendChild(newDivT)
+
+		const newDivQ = document.createElement("div");
+		newDivQ.innerHTML = calcMacro[macro].toFixed(2)
+		newDivQ.style.gridColumn = "2/3"
+		document.getElementById("detailedNutrientGrid").appendChild(newDivQ)
+	}
+	for (const micro of incMicroList) {						// loop over micro name
+		const newDivT = document.createElement("div");
+		newDivT.innerHTML = micro
+		newDivT.style.gridColumn = "1/2"
+		document.getElementById("detailedNutrientGrid").appendChild(newDivT)
+
+		const newDivQ = document.createElement("div");
+		newDivQ.innerHTML = (calcMicro[micro]*100).toFixed() + "%"
+		newDivQ.style.gridColumn = "2/3"
+		document.getElementById("detailedNutrientGrid").appendChild(newDivQ)
+	}
+
+
+	console.log("building macros")
 	document.getElementById("caloriesGrid").innerHTML = "Calories (" + (calcMacro["Energy (kcal) (kcal)"]).toFixed(0) + ")"
 	document.getElementById("costGrid").innerHTML = "Cost (£" + (calcMacro["cost_per_100g"]).toFixed(2) + ")"
-	
+	document.getElementById("sugarGrid").innerHTML = "Sugar (" + (calcMacro["Total sugars (g)"]).toFixed(2) + "g)"
+	document.getElementById("sodiumGrid").innerHTML = "Salt (" + (2.5 * calcMacro["Sodium (mg)"] / 1000).toFixed(2) + "g)"
+	document.getElementById("proteinGrid").innerHTML = "Protein (" + (calcMacro["Protein (g)"]).toFixed(2) + "g)"
 }
 
 
 
 window.addButtonFunc = function() {
-	eatFoods[bestRow] = sourceData[bestRow]
+	// eatFoods[bestRow] = sourceData[bestRow]
 
-	delete sourceData[bestRow]
-	console.log(eatFoods)
+	// delete sourceData[bestRow]
+	// console.log(eatFoods)
 
-	eatFoodsList[bestRow] = document.getElementById("gDayValue").textContent
-	document.getElementById("eatingFood").textContent = JSON.stringify(eatFoodsList)
+	// eatFoodsList[bestRow] = document.getElementById("gDayValue").textContent
+	// document.getElementById("eatingFood").textContent = JSON.stringify(eatFoodsList)
+
+	console.log("selectedOptions", selectedOptions)
+	console.log(Object.entries(selectedOptions))
+	for (const [key,value] of Object.entries(selectedOptions)){
+		if (selectedOptions[key] === true) {
+			console.log("key", key)
+			eatFoods[key] = sourceData[key]
+
+			delete sourceData[key]
+			console.log(eatFoods)
+		
+			eatFoodsList[key] = document.getElementById("gDayValue").textContent
+			document.getElementById("eatingFood").textContent = JSON.stringify(eatFoodsList)
+		}
+	}
+
+
 
 	generateEatingList()
+
+	console.log("updatingnutrients")
 	updateNutrients()
 
+	console.log("stringify")
 	document.getElementById("nutrientInfo2").textContent = JSON.stringify(calcMicro)
 	document.getElementById("nutrientInfo3").textContent = JSON.stringify(calcMacro)
 
+	console.log("removedGroup")
 	const removedGroup = foodCompanions[bestRow]
 	const toRemove = collections[removedGroup]
 	// console.log(toRemove)
 	console.log(toRemove.length)
 
 	for (var i=0;i<toRemove.length;i++){
-		if (toRemove[i] !== bestRow){
+		// if (toRemove[i] !== bestRow){
+		if (selectedOptions[toRemove[i]] === false){
 			console.log(toRemove[i])
 			removedFoods[toRemove[i]] = sourceData[toRemove[i]]
 			delete sourceData[toRemove[i]]
@@ -664,6 +931,8 @@ window.addButtonFunc = function() {
 	generateRemovedList()
 	// document.getElementById("notEatingFood").textContent = removedFoodsList
 	document.getElementById("notEatingFood").textContent = JSON.stringify(removedFoodsList)
+
+	selectedOptions = {}
 
 
 	findBestFood()
@@ -736,6 +1005,7 @@ foodSearchButton.onclick = function() {
 		searchAdd.addEventListener("click", searchAddButtonFunc);
 		document.getElementById("dropContent").appendChild(searchAdd)
 	}
+	document.getElementById("searchDrop").innerHTML = "Search results (" + sortedMatches.length + ")"
 }
 
 window.searchAddButtonFunc = function(el) {
@@ -762,6 +1032,50 @@ window.searchAddButtonFunc = function(el) {
 	}
 }
 
+document.getElementById('loadImportData').addEventListener("click", function() {
+	const importedData = loadTextArea.value
+	const foods = importedData.split("Food Name: ")
+
+	for (var i=1; i<foods.length; i++){
+		var foodName = foods[i].split("Quantity: ")[0].trim()
+		var quantity = foods[i].split("Quantity: ")[1].trim()
+
+		// console.log("foodname")
+		console.log(foodName, "x")
+		console.log("quantity", quantity)
+
+		if (sourceData.hasOwnProperty(foodName)) {
+			console.log("processing", foodName)
+
+			eatFoods[foodName] = sourceData[foodName]
+	
+			delete sourceData[foodName]
+			console.log(eatFoods)
+	
+			eatFoodsList[foodName] = quantity
+	
+
+	
+		}
+	}
+	generateEatingList()
+	updateNutrients()
+	findBestFood()
+	
+}); 
+
+
+document.getElementById('showOptions').addEventListener("click", function() {
+	const paragraph = document.getElementById('options-list');
+	if (paragraph.style.display === 'none') {
+		paragraph.style.display = "grid";
+		document.getElementById('showOptions').innerHTML = "Hide Food Options"
+	}
+	else {
+		paragraph.style.display = "none"
+		document.getElementById('showOptions').innerHTML = "Show Food Options"
+	}
+}); 
 
 document.getElementById('showAddedFoods').addEventListener("click", function() {
 	const paragraph = document.getElementById('foodGrid');
@@ -787,6 +1101,70 @@ document.getElementById('showRemovedFoods').addEventListener("click", function()
 	}
 }); 
 
+
+
+document.getElementById('showShoppingTesco').addEventListener("click", function() {
+	const paragraph = document.getElementById('shoppingListTesco');
+	if (paragraph.style.display === 'none') {
+		paragraph.style.display = "grid";
+		document.getElementById('showShoppingTesco').innerHTML = "Hide Tesco Shopping List"
+	}
+	else {
+		paragraph.style.display = "none"
+		document.getElementById('showShoppingTesco').innerHTML = "Show Tesco Shopping List"
+	}
+}); 
+
+document.getElementById('showShoppingSains').addEventListener("click", function() {
+	const paragraph = document.getElementById('shoppingListSains');
+	if (paragraph.style.display === 'none') {
+		paragraph.style.display = "grid";
+		document.getElementById('showShoppingSains').innerHTML = "Hide Sainsbury's Shopping List"
+	}
+	else {
+		paragraph.style.display = "none"
+		document.getElementById('showShoppingSains').innerHTML = "Show Sainsbury's Shopping List"
+	}
+}); 
+
+document.getElementById('showExportData').addEventListener("click", function() {
+	const paragraph = document.getElementById('exportGrid');
+	if (paragraph.style.display === 'none') {
+		paragraph.style.display = "grid";
+		document.getElementById('showExportData').innerHTML = "Hide Save Data"
+	}
+	else {
+		paragraph.style.display = "none"
+		document.getElementById('showExportData').innerHTML = "Show Save Data"
+	}
+}); 
+
+document.getElementById('showImportData').addEventListener("click", function() {
+	const paragraph = document.getElementById('loadHide');
+	if (paragraph.style.display === 'none') {
+		paragraph.style.display = "";
+		document.getElementById('showImportData').innerHTML = "Hide Load Data Controls"
+	}
+	else {
+		paragraph.style.display = "none"
+		document.getElementById('showImportData').innerHTML = "Show Load Data Controls"
+	}
+}); 
+
+document.getElementById('showNutrientData').addEventListener("click", function() {
+	const paragraph = document.getElementById('detailedNutrientGrid');
+	if (paragraph.style.display === 'none') {
+		paragraph.style.display = "";
+		document.getElementById('showNutrientData').innerHTML = "Hide Detailed Nutritional Data"
+	}
+	else {
+		paragraph.style.display = "none"
+		document.getElementById('showNutrientData').innerHTML = "Show Detailed Nutritional Data"
+	}
+}); 
+
+
+
 window.addEventListener("keydown", function (event) {
 	if (event.defaultPrevented) {
 	  return; // Do nothing if the event was already processed
@@ -796,22 +1174,30 @@ window.addEventListener("keydown", function (event) {
 	  case "Down": // IE/Edge specific value
 	  case "ArrowDown":
 		console.log('arrow down')
+		downButton.style.backgroundColor = "white"
+		setTimeout(() => {downButton.style.backgroundColor = ""}, 100)
 		downFood()
 		break;
 	  case "Up": // IE/Edge specific value
 	  case "ArrowUp":
 		console.log('arrow up')
+		upButton.style.backgroundColor = "white"
+		setTimeout(() => {upButton.style.backgroundColor = ""}, 100)
 		upFood()
 		break;
 
 	case "ArrowLeft":
 		console.log('arrow left')
+		removeButton.style.backgroundColor = "white"
+		setTimeout(() => {removeButton.style.backgroundColor = ""}, 100)
 		removeFunc()
 		// upFood()
 		break;
 
 	case "ArrowRight":
 		console.log('arrow right')
+		eatButton.style.backgroundColor = "white"
+		setTimeout(() => {eatButton.style.backgroundColor = ""}, 100)
 		addButtonFunc()
 		// upFood()
 		break;
@@ -837,5 +1223,29 @@ window.addEventListener("keydown", function (event) {
 
   // sort out food names
 
-  // check why it doesn't work on chrome
-  // add arrow keys explanation
+  // search through not eaten foods too, and return in a slightly different colour
+  // delete option in search after clicking on it
+
+  // get it working for meat eaters and vegetarians
+
+  // get new favicon
+  // make new name (maybe grub)
+
+  // clicking on food brings up modal with food info
+
+  // rank foods within a group
+
+
+  // replace eat less and eat more with + and -
+  // replace remove with bin symbol 
+  // colour alternate lines for visibility
+
+  // YY
+  // Instructions saying that you can select multiple using your mouse (or you should unselect the first row)
+  // Once rice wild had only one option and the other time it shows bunch of options
+  // Sweet potato has two options when it's recommended but when using find a food function there are 20
+  // Click function for the nutritient (e.g., calcium)
+  // A function to know which line you are going to remove
+  // Weekly cost
+
+  // include actual quantities of nutrients, not just % on detailed nutritional data
