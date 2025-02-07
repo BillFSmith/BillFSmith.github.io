@@ -32,7 +32,8 @@ testButton1.onclick = function() {
 	console.log(bestRow)
 }
 
-import sourceData from "../../temp(vegan3).json";
+// import sourceData from "../../temp(vegan3).json";
+import sourceData from "../../temp(vegan4).json";
 // import displayNames from "../../display_names.json";
 import displayNames from "../../vegan_display_names.json";
 // import collections from "../../collections.json";
